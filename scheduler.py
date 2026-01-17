@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-class PaperDigestScheduler:
+class StudyLetterScheduler:
     """논문 요약 자동 발송 스케줄러"""
     
     def __init__(self):
@@ -81,5 +81,5 @@ def get_scheduler():
     """스케줄러 싱글톤 인스턴스 반환"""
     global _scheduler_instance
     if _scheduler_instance is None:
-        _scheduler_instance = PaperDigestScheduler()
+        _scheduler_instance = StudyLetterScheduler()
     return _scheduler_instance

@@ -26,7 +26,7 @@ scheduler = get_scheduler()
 
 # 페이지 설정
 st.set_page_config(
-    page_title="PaperDigest - 논문 요약 서비스",
+    page_title="스터디레터 - 논문 요약 서비스",
     page_icon="📚",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -198,7 +198,7 @@ def format_email_content(papers, keyword):
     today = datetime.now().strftime('%Y년 %m월 %d일')
     
     email_body = f"""
-PaperDigest - '{keyword}' 관련 최신 논문 ({today})
+스터디레터 - '{keyword}' 관련 최신 논문 ({today})
 {'=' * 70}
 
 안녕하세요!
@@ -231,7 +231,7 @@ PaperDigest - '{keyword}' 관련 최신 논문 ({today})
     
     email_body += f"""
 
-이 이메일은 PaperDigest 서비스를 통해 자동으로 생성되었습니다.
+이 이메일은 스터디레터 서비스를 통해 자동으로 생성되었습니다.
 Powered by arXiv & Google Gemini
 
 """
@@ -300,7 +300,7 @@ def process_and_send(keyword, email, schedule_id=None):
             time.sleep(1)  # API 호출 간격
         
         # 3. 이메일 포맷팅
-        subject = f"[PaperDigest] '{keyword}' 관련 최신 논문 ({datetime.now().strftime('%y/%m/%d')})"
+        subject = f"[스터디레터] '{keyword}' 관련 최신 논문 ({datetime.now().strftime('%y/%m/%d')})"
         email_body = format_email_content(papers, keyword)
         
         # 4. 이메일 전송
@@ -338,7 +338,7 @@ def main():
     
     # 사이드바 - 메뉴
     with st.sidebar:
-        st.markdown("## 📚 PaperDigest")
+        st.markdown("## 📚 스터디레터")
         st.markdown("---")
         
         menu = st.radio(
@@ -370,7 +370,7 @@ def show_instant_send():
     """단발성 발송 화면"""
     st.markdown("""
         <div class="header">
-            <h1>📚 PaperDigest</h1>
+            <h1>📚 스터디레터</h1>
             <p>최신 논문을 AI가 요약해서 이메일로 보내드립니다</p>
         </div>
     """, unsafe_allow_html=True)
@@ -428,7 +428,7 @@ def show_instant_send():
                     time.sleep(1)
                     progress_bar.progress((idx + 1) / len(papers))
             
-            subject = f"[PaperDigest] '{keyword}' 관련 최신 논문 ({datetime.now().strftime('%y/%m/%d')})"
+            subject = f"[스터디레터] '{keyword}' 관련 최신 논문 ({datetime.now().strftime('%y/%m/%d')})"
             email_body = format_email_content(papers, keyword)
             
             with st.spinner('📨 이메일 전송 중...'):

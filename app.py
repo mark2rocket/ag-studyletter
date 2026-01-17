@@ -255,8 +255,8 @@ def send_email(recipient, subject, body):
         
         message.attach(MIMEText(body, 'plain', 'utf-8'))
         
-        with smtplib.SMTP('smtp.gmail.com', 587) as server:
-            server.starttls()
+        # SMTP_SSL을 사용하여 포트 465로 연결 (더 안정적)
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465, timeout=30) as server:
             server.login(sender_email, sender_password)
             server.send_message(message)
         

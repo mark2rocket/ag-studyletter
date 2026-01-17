@@ -46,7 +46,7 @@ class EmailHistory(Base):
 
 
 # 데이터베이스 초기화
-def init_db(db_path='sqlite:///paperdigest.db'):
+def init_db(db_path='sqlite:///studyletter.db'):
     """데이터베이스 초기화"""
     engine = create_engine(db_path, echo=False)
     Base.metadata.create_all(engine)
